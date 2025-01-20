@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,30 @@
   <link rel="stylesheet" href="./index.css">
   <script type="module" src="./index.js"></script>
 </head>
+
 <body>
-  <main id="table">
-    
+  <main id="table" class="poke-table">
   </main>
+  <nav id="filterNav">
+    <button id="showDetailBtn">
+      show details
+    </button>
+    <button onclick="window.gridMuuri.sort('order');">
+      order by Nº
+    </button>
+    <button onclick="window.gridMuuri.sort('name');">
+      order name
+    </button>
+    <button onclick="window.gridMuuri.sort('height');">
+      order height
+    </button>
+    <button onclick="window.gridMuuri.sort('weight');">
+      order weight
+    </button>
+    <button onclick="window.gridMuuri.sort('id');">
+      order id
+    </button>
+  </nav>
 </body>
+
 </html>

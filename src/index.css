@@ -1,19 +1,57 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(133, 133, 133);
+  background: linear-gradient(0deg, rgba(133, 133, 133, 1) 0%, rgba(204, 204, 204, 1) 14%, rgba(32, 32, 32, 1) 30%, rgba(255, 255, 255, 1) 50%, rgba(32, 32, 32, 1) 70%, rgba(135, 37, 37, 1) 88%, rgba(96, 0, 0, 1) 100%);
+  min-height: 100svh;
+}
+
 #table {
-  padding: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 60px 60px;
-  justify-content: space-evenly;
-  align-items: center;
+  padding: 0px;
+  position: relative;
+  max-width: 940px;
+  margin: auto;
+}
+
+@media only screen and (min-width: 375px) {
+  #table {
+    max-width: 310px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #table {
+    max-width: 625px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #table {
+    max-width: 937px;
+  }
+}
+
+.wrap-poke-card {
+  max-width: 300px;
+  min-width: 300px;
+  position: absolute;
+  margin: 6px;
+  z-index: 1;
 }
 
 .poke-card {
+  position: relative;
   background: radial-gradient(circle, rgb(255 255 255 / 100%) 20%, rgb(0 0 0 / 100%) 23%, rgb(0 0 0 / 100%) 25%, rgb(255 0 0 / 0%) 45%), linear-gradient(0deg, rgb(255 255 255 / 100%) 40%, rgb(0 0 0 / 100%) 50%, rgb(0 0 0 / 100%) 65%, rgb(255 0 0 / 100%) 100%);
   transform-style: preserve-3d;
   transform: perspective(1000px) translateZ(20px);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  max-width: 300px;
-  min-width: 300px;
+  width: 100%;
   border: 1px solid lightblue;
   border-radius: 20px;
   padding: 15px;
@@ -31,6 +69,7 @@
   transform: translateY(-100px);
 }
 
+.poke-card.show-detail img,
 .poke-card:hover img {
   transform: translateY(0);
 }
@@ -40,6 +79,7 @@
   padding: 0 15px;
 }
 
+.poke-card.show-detail .poke-body,
 .poke-card:hover .poke-body {
   background-color: rgb(74 73 71 / 50%);
 }
@@ -50,6 +90,55 @@
   opacity: 0;
 }
 
+.poke-card.show-detail *,
 .poke-card:hover * {
   opacity: 1;
+}
+
+#filterNav {
+  background-color: rgba(100, 148, 237, 0.54);
+  backdrop-filter: blur(15px);
+  padding: 12px 8px;
+  z-index: 1;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: rgb(133, 133, 133);
+  background: linear-gradient(-90deg, rgba(133, 133, 133, 1) 0%, rgba(204, 204, 204, 1) 14%, rgba(32, 32, 32, 1) 30%, rgba(255, 255, 255, 1) 50%, rgba(32, 32, 32, 1) 70%, rgba(135, 37, 37, 1) 88%, rgba(96, 0, 0, 1) 100%);
+}
+
+/** Muuri css **/
+.grid {
+  position: relative;
+}
+
+.item {
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  z-index: 1;
+  background: #000;
+  color: #fff;
+}
+
+.item.muuri-item-dragging {
+  z-index: 3;
+}
+
+.item.muuri-item-releasing {
+  z-index: 2;
+}
+
+.item.muuri-item-hidden {
+  z-index: 0;
+}
+
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
